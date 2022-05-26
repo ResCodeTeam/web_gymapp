@@ -69,6 +69,7 @@ import { PostComponent } from './post/post.component';
 registerLocaleData(ptPT)
 
 import { AgendarAvaliacaoComponentComponent } from './aluno/agendar-avaliacao-component/agendar-avaliacao-component.component';
+import { DesafiosComponent } from './desafios/desafios.component';
 
 @NgModule({
   declarations: [
@@ -126,7 +127,8 @@ import { AgendarAvaliacaoComponentComponent } from './aluno/agendar-avaliacao-co
     CartoesComponent,
     FooterComponent,
     PostComponent,
-    AgendarAvaliacaoComponentComponent
+    AgendarAvaliacaoComponentComponent,
+    DesafiosComponent
   ],
   imports: [
     BrowserModule,

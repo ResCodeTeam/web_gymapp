@@ -22,6 +22,7 @@ import { PostComponent } from './post/post.component';
 import { AgendarAvaliacaoComponentComponent } from './aluno/agendar-avaliacao-component/agendar-avaliacao-component.component';
 import { RoleGuardService } from './auth/services/role-guard.service';
 import { AuthGuardService } from './auth/services/auth-guard.service';
+import { DesafiosComponent } from './desafios/desafios.component';
 
 
 //Rotas para paginas
@@ -35,6 +36,7 @@ const routes: Routes = [
       expectedRole: 'Aluno'
     }
   },
+  { path: 'desafios', component: DesafiosComponent },
   { path: 'dashboardTreinador', component: DashboardTreinadorComponent },
   { path: 'verPublicacao', component: VerPublicacaoComponent },
   { path: 'post', component: PostComponent },
