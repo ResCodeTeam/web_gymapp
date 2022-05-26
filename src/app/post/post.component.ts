@@ -27,8 +27,6 @@ export class PostComponent implements OnInit, AfterViewInit {
   }
 
   commentPost(postId: string, i: number): void {
-    console.log(i)
-    console.log(this.pubcomment)
     var comment = {
       postId: postId,
       comentario: this.pubcomment,
@@ -47,12 +45,6 @@ export class PostComponent implements OnInit, AfterViewInit {
         }
         this.arrayPosts[i].comentarios_publicacao.push(com)
       })
-
-
-
-
-
-
     }, err => {
       console.log(err)
     })

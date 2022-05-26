@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LOCALE_ID } from '@angular/core';
 import ptPT from '@angular/common/locales/pt-PT';
@@ -65,11 +64,13 @@ import { CartoesComponent } from './treinador/ecra-alunos/cartoes/cartoes.compon
 import { FooterComponent } from './footer/footer.component';
 
 import { PostComponent } from './post/post.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 registerLocaleData(ptPT)
 
 import { AgendarAvaliacaoComponentComponent } from './aluno/agendar-avaliacao-component/agendar-avaliacao-component.component';
 import { DesafiosComponent } from './desafios/desafios.component';
+import { InscreverDesafiosComponent } from './desafios/inscrever-desafios/inscrever-desafios.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { DesafiosComponent } from './desafios/desafios.component';
     FooterComponent,
     PostComponent,
     AgendarAvaliacaoComponentComponent,
-    DesafiosComponent
+    DesafiosComponent,
+    InscreverDesafiosComponent
   ],
   imports: [
     BrowserModule,
@@ -136,6 +138,7 @@ import { DesafiosComponent } from './desafios/desafios.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlatpickrModule.forRoot()
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt-PT' }],
   bootstrap: [AppComponent]

@@ -23,6 +23,7 @@ import { AgendarAvaliacaoComponentComponent } from './aluno/agendar-avaliacao-co
 import { RoleGuardService } from './auth/services/role-guard.service';
 import { AuthGuardService } from './auth/services/auth-guard.service';
 import { DesafiosComponent } from './desafios/desafios.component';
+import { InscreverDesafiosComponent } from './desafios/inscrever-desafios/inscrever-desafios.component';
 
 
 //Rotas para paginas
@@ -37,6 +38,7 @@ const routes: Routes = [
     }
   },
   { path: 'desafios', component: DesafiosComponent },
+  { path: 'desafios/:id', component: InscreverDesafiosComponent },
   { path: 'dashboardTreinador', component: DashboardTreinadorComponent },
   { path: 'verPublicacao', component: VerPublicacaoComponent },
   { path: 'post', component: PostComponent },

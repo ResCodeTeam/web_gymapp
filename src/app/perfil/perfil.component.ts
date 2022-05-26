@@ -10,7 +10,7 @@ import { TreinosService } from './services/treinos.service';
 export class PerfilComponent implements OnInit {
 
   userInfo: any;
-  userTreinos: any;
+  userTreinos = [];
   modalInfo: any;
 
   constructor(
@@ -21,17 +21,20 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
     this.perfilService.getPerfil().subscribe(data => {
       this.userInfo = data
+      console.log(data)
     })
 
     this.treinosService.getTreinos().subscribe(data => {
-      this.userTreinos = data
-
-      console.log(data)
+      for (let i = 0; i < Object.keys(data).length; i++) {
+        this.userTreinos.push(data[i])
+       
+      }
+      console.log(this.userTreinos)
     })
   }
 
 
-  modalPub(pub:any){
+  modalPub(pub: any) {
     this.modalInfo = pub
 
     console.log(this.modalInfo)

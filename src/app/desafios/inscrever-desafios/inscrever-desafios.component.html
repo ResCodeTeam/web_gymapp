@@ -1,0 +1,198 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row mt-4 my-3 mx-1">
+        <div class="col-10">
+            <p>
+                {{desafioInfo.descricao}}
+            </p>
+        </div>
+        <div class="col-2 text-center">
+            <a data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="submit" class="btn btn-primary">Agendar desafio</button></a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-3 mt-3">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Regras</h5>
+                            <div class="row card-scroll h-200px">
+                                <div class="row mt-1" *ngFor="let regra of desafioInfo.regras_desafio;let i = index">
+                                    <div class="col-md-12">
+                                        <div class="card " style="width: 100%;">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="d-flex flex-wrap align-items-center">
+                                                        <div class="col-md-3 text-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="35"
+                                                                height="35" fill="#FF5050" class="bi bi-book"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                                                            </svg>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <h6 class="text-dark"> Regra {{i+1}} </h6>
+                                                            <p class="lh-sm mt-1 text-muted">
+                                                                {{regra.descricao}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12 text-center mt-3">
+                    <div class="card " style="width: 100%;">
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div class="col-md-1 text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FF5050"
+                                        class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                    </svg>
+                                </div>
+                                <div class="col-md-10 lh-sm">
+                                    <h5 class="text-dark"> Localização </h5>
+                                    <p class="lh-sm text-primary"> Ginásio Barcelos</p>
+                                    <p class="textMiddle text-dark">Treinador: <b>Fátima Neves</b></p>
+                                    <p class="lh-sm text-muted"> R. Cândido da Cunha 100, Barcelos
+                                    </p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-12 mt-3">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Exercícios</h5>
+                        <div class="row card-scroll h-465">
+                            <div class="row mt-1">
+                                <div class="col-md-6 mt-2" *ngFor="let exercicio of desafioInfo.exercicios_desafio">
+                                    <div class="card " style="width: 100%;">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="d-flex flex-wrap align-items-center">
+                                                    <div class="col-md-2 mt-1">
+                                                    </div>
+                                                    <div class="col-md-2 text-center">
+                                                        <img src="./img/muscle 1.svg" width="40" alt="" srcset="">
+                                                    </div>
+                                                    <div class="col-md-6 mt-1 text-center">
+                                                        <h6><b>{{exercicio.exercicios.nome}}</b></h6>
+                                                    </div>
+                                                    <div class="col-md-2 mt-1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"
+                                                    *ngFor="let sets of exercicio.series_desafio; let ind = index">
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-1"></div>
+                                                        <div class="col-md-3 mt-1 text-muted">
+                                                            Set {{ind + 1}}
+                                                        </div>
+                                                        <div class="col-md-3 mt-1 text-center lh-1">
+                                                            <p class="lh-1" style="margin-bottom: 0px;">
+                                                                {{sets.valor}}
+                                                            </p>
+
+                                                            <p class="lh-1">
+                                                                reps
+                                                            </p>
+
+                                                        </div>
+                                                        <div class="col-md-1 mt-1 text-center">
+                                                            *
+                                                        </div>
+                                                        <div class="col-md-3 mt-1 lh-1 text-end">
+                                                            <p class="lh-1" style="margin-bottom: 0px;">
+                                                                80
+                                                            </p>
+
+                                                            <p class="lh-1">
+                                                                Kg
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-1"></div>
+                                                    </div>
+                                                </li>
+
+
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h5 class="text-white" style="margin-left: auto;margin-right: auto;">Agendar Desafio</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-10">
+                            <input class="form-control " type="text" mwlFlatpickr [(ngModel)]="dateTimeValue"
+                                [altInput]="true" [time24hr]="true" [minDate]="today" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i">
+                        </div>
+                        <select class="form-select form-control mt-3" [(ngModel)]="selectedGinasio">
+                            <option *ngFor="let ginasio of ginasios" value="{{ginasio.ginasio_id}}">{{ginasio.nome}}
+                            </option>
+
+                        </select>
+                        <div class="alert alert-success mt-3" role="alert" *ngIf="sucesso">
+                            Desafio agendado com sucesso
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="modal-footer">
+                <div class="float-start">
+                    <button class="btn btn-primary btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+                <button class="btn btn-primary btn-save" (click)="agendarDesafio()">Agendar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
