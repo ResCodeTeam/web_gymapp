@@ -19,6 +19,8 @@ export class DesafiosComponent implements OnInit {
   desafios = []
   ngOnInit(): void {
     this.getAllMyGyms()
+    this.getAllDesafiosAgendados()
+
 
   }
 
@@ -28,12 +30,24 @@ export class DesafiosComponent implements OnInit {
         this.desafioService.getAllDesafiosByGymID(data[i].ginasio_id).subscribe(des => {
           if (des[0] != null) {
             for (let desafi of des) {
+              desafi.estado = false
               this.desafios.push(desafi)
             }
           }
         })
       }
     })
+    console.log(this.desafios)
+  }
+
+  getAllDesafiosAgendados():void {
+    this.desafioService.getAllDesafiosAgendados().subscribe(data => {
+      for (let i = 0; i < Object.keys(data).length; i++) {
+        data[i].estado = true
+        this.desafios.push(data[i])
+      }
+    })
+
     console.log(this.desafios)
   }
 }
