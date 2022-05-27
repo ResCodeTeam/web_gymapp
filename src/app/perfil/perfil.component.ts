@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from '../post/services/posts.service';
 import { PerfilService } from './services/perfil.service';
 import { TreinosService } from './services/treinos.service';
 
@@ -12,32 +13,67 @@ export class PerfilComponent implements OnInit {
   userInfo: any;
   userTreinos = [];
   modalInfo: any;
+  comentario = ''
+  pubcomment: string
+  emptyArray = []
 
   constructor(
     private perfilService: PerfilService,
-    private treinosService: TreinosService
+    private treinosService: TreinosService,
+    private postService: PostsService
   ) { }
 
   ngOnInit(): void {
     this.perfilService.getPerfil().subscribe(data => {
       this.userInfo = data
-      console.log(data)
     })
-
     this.treinosService.getTreinos().subscribe(data => {
       for (let i = 0; i < Object.keys(data).length; i++) {
         this.userTreinos.push(data[i])
        
       }
-      console.log(this.userTreinos)
     })
   }
 
 
-  modalPub(pub: any) {
-    this.modalInfo = pub
+  modalPub(pubId: string) {
+    this.postService.getInfoOfPost(pubId).subscribe(data => {
+      this.modalInfo = data
+      console.log(data)
+    })
+  }
 
-    console.log(this.modalInfo)
+  commentPost(postId: string): void {
+    var comment = {
+      postId: postId,
+      comentario: this.pubcomment,
+      identificacao: this.emptyArray
+    }
+
+    this.postService.comentPost(comment).subscribe(data => {
+      this.perfilService.getPerfil().subscribe(user => {
+        var com = {
+          users: {
+            nome: user.perfil.nome,
+            uid: user.perfil.uid,
+            imagem_url: user.perfil.imagem_url
+          },
+          comentario: this.pubcomment
+        }
+        this.modalInfo.comentarios_publicacao.push(com)
+      })
+    }, err => {
+      console.log(err)
+    })
+  }
+
+  likePost(pubId: string) {
+    const data = {
+      postId: pubId
+    }
+    this.postService.likePost(data).subscribe(data => {
+      this.modalInfo._count.gostos_publicacao += 1
+    })
   }
 
 }

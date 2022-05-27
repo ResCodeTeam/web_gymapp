@@ -59,7 +59,7 @@
             <div class="card mh-100">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class="text-decoration-none link-dark" href="./desafio.html">
+                        <a class="text-decoration-none link-dark" href="./desafios">
 
                             <div class="card-body text-center mt-2 align-middle" style="padding-bottom: 0%;">
                                 <h5 class="card-title">Desafios</h5>
@@ -67,7 +67,7 @@
                         </a>
                         <div class="card-body text-center ">
                             <div class="row card-scroll" style="padding-top: 0%; height: 275px;">
-                                <div class="row mt-1">
+                                <div class="row mt-1" *ngFor="let des of desafios">
                                     <div class="col-md-12">
                                         <a class="text-decoration-none link-dark" href="./inscreverDesafio.html">
                                             <div class="card" style="width: 100%;">
@@ -78,8 +78,8 @@
                                                                 alt="">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            Desafio da Primavera
-                                                            <b>Modalidade</b>
+                                                            Nome do desafio <br>
+                                                            <b>{{des.nome}}</b>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,7 +87,26 @@
                                         </a>
                                     </div>
                                 </div>
-                                
+                                <div class="row mt-1" *ngFor="let des of desafiosAgendados">
+                                    <div class="col-md-12">
+                                        <a class="text-decoration-none link-dark" href="./inscreverDesafio.html">
+                                            <div class="card" style="width: 100%;">
+                                                <div class="card-body text-center">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <img src="../../assets/img/sword 1.png" class="img-fluid swordWi"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            Nome do desafio <br>
+                                                            <b>{{des.desafios.nome}}</b>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -286,20 +305,20 @@
                         <tbody>
                             <tr>
                                 <td class="align-middle" width="(100/7)%">Segunda-feira
-                                    <img src="./img/sleep 1.svg" class="img-responsive mx-auto d-block mt-1" alt="">
+                                    <img src="../../assets/img/sleep 1.svg" class="img-responsive mx-auto d-block mt-1" alt="">
                                 </td>
-                                <td class="align-middle" width="(100/7)%">Terça-feira<img src="./img/sleep 1.svg"
+                                <td class="align-middle" width="(100/7)%">Terça-feira<img src="../../assets/img/sleep 1.svg"
                                         class="img-responsive mx-auto d-block  mt-1" alt=""></td>
-                                <td class="align-middle" width="(100/7)%">Quarta-feira<img src="./img/sleep 1.svg"
+                                <td class="align-middle" width="(100/7)%">Quarta-feira<img src="../../assets/img/sleep 1.svg"
                                         class="img-responsive mx-auto d-block  mt-1" alt=""></td>
                                 <td class="align-middle" width="(100/7)%">Quinta-feira<img
-                                        src="./img/dumbbell (1) 2.svg" class="img-responsive mx-auto d-block  mt-1"
+                                        src="../../assets/img/dumbbell (1) 2.svg" class="img-responsive mx-auto d-block  mt-1"
                                         alt=""></td>
-                                <td class="align-middle" width="(100/7)%">Sexta-feira<img src="./img/sleep 1.svg"
+                                <td class="align-middle" width="(100/7)%">Sexta-feira<img src="../../assets/img/sleep 1.svg"
                                         class="img-responsive mx-auto d-block  mt-1" alt=""></td>
-                                <td class="align-middle" width="(100/7)%">Sábado<img src="./img/treadmill 1.png"
+                                <td class="align-middle" width="(100/7)%">Sábado<img src="../../assets/img/treadmill 1.png"
                                         class="img-responsive mx-auto d-block  mt-1" alt=""></td>
-                                <td class="align-middle" width="(100/7)%">Domingo<img src="./img/dumbbell (1) 2.svg"
+                                <td class="align-middle" width="(100/7)%">Domingo<img src="../../assets/img/dumbbell (1) 2.svg"
                                         class="img-responsive mx-auto d-block  mt-1" alt=""></td>
 
                             </tr>
@@ -314,7 +333,7 @@
                 <div class="card-body">
                     <div class="row martopRegisto">
                         <div class="col-md-5">
-                            <img src="../../assets/img/Group 43.png4" class="img-fluid" alt="">
+                            <img src="../../assets/img/image2vector 1.svg" class="img-fluid" alt="">
                         </div>
                         <div class="col-md-5">
                             <table style="height: 100%; width: 100%;">

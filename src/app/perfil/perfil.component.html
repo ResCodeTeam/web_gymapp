@@ -1,367 +1,259 @@
 <app-header></app-header>
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 mt-5 px-md-5">
+      <div class="mx-auto text-center">
+        <img src="{{userInfo.perfil.imagem_url}}" style="width: 180px; height: 180px;" alt="" srcset="">
+      </div>
+    </div>
+
+    <div class="col-md-7 mt-5">
+      <h2 class="card-title">{{userInfo.perfil.nome}}</h2>
+      <p class="text-muted">
+        {{userInfo.perfil.hashtag}}
+      </p>
+      <p>
+        {{userInfo.perfil.descricao}}
+      </p>
+    </div>
+
+    <div class="col-md-2 mt-5 px-md-5 align-middle">
+      <button type="submit" class="btn btn-primary">Editar perfil</button>
+    </div>
+  </div>
+
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 mt-5 px-md-5">
-            <div class="mx-auto text-center">
-                <img src="{{userInfo.perfil.imagem_url}}" style="width: 180px; height: 180px;" alt="" srcset="">
+      <div class="col-md-8 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <div class="row text-center">
+              <h5 class="text-dark">Publicações</h5>
             </div>
-        </div>
+            <div class="row">
+              <div *ngFor="let pub of userInfo.posts.data | keyvalue" class="col-sm-12 col-lg-6 col-md-12 col-12 mt-3">
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modalPub(pub.value.publicacao_id)">
+                  <div class="card">
+                    <div class="card-body">
 
-        <div class="col-md-7 mt-5">
-            <h2 class="card-title">{{userInfo.perfil.nome}}</h2>
-            <p class="text-muted">
-                {{userInfo.perfil.hashtag}}
-            </p>
-            <p>
-                {{userInfo.perfil.descricao}}
-            </p>
-        </div>
+                      <div class="row">
+                        <div class="col-md-2 mt-2">
+                          <div class="mx-auto text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                              class="bi bi-person-circle" viewBox="0 0 16 16">
+                              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                              <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                          </div>
+                        </div>
 
-        <div class="col-md-2 mt-5 px-md-5 align-middle">
-            <button type="submit" class="btn btn-primary">Editar perfil</button>
+                        <div class="col-md-10 mt-2 px-md-3">
+                          <h6 class="card-title">{{userInfo.perfil.nome}}</h6>
+                        </div>
+                      </div>
+                      <div class="row mt-3" style="margin-left: auto;">
+                        <p class="text-muted">{{pub.value.descricao}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+
+
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-4 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4  text-center">
+                <h5 class="text-dark">Treinos</h5>
+              </div>
+              <div class="col-md-4">
+                <a href="#">
+                 
+                </a>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12 mt-3" *ngFor="let treino of userInfo.treinos.data | keyvalue;let i = index">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-wrap align-items-center">
+                      <div class="col-md-2 mt-20">
+                        <div class="mx-auto">
+                          <img src="../../assets/img/Group 58.png" class="img-fluid Crossfit mx-auto d-block ">
+                        </div>
+                      </div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-8 mt-2 ">
+                        <h6 class="card-title">Treino {{i + 1}}</h6>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF5050"
+                          class="bi bi-stopwatch" viewBox="0 0 16 16">
+                          <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                          <path
+                            d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+                        </svg>
+                        <span class="text-muted textMiddle"> {{treino.value.duracao}}</span><br>
+                        <svg width="16" height="20" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M8.04489 5.6576C7.61532 6.94117 7.48801 8.30764 7.99902 9.5C7.29059 9.51243 5.99902 8 5.99902 8C5.99902 8 3 10 3 15.5C3 16 3.49902 22.5 12 22.5C19.5 22.5 19.999 17 19.999 15.5C19.999 10 17 8 17 8C17 8 16.499 9.5 15.5 9.5C15.5 9 14.8683 7.20721 14 6C13.355 5.10331 12.517 4.97612 12 4C11.4441 2.95033 11.5 1.5 11.5 1.5C10.9938 1.49988 9.7181 2.28088 8.77701 4"
+                            stroke="#FF5050" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                          <path
+                            d="M6.588 19C6.548 19 6.514 18.988 6.486 18.964C6.462 18.936 6.45 18.902 6.45 18.862V14.878C6.45 14.838 6.462 14.806 6.486 14.782C6.514 14.754 6.548 14.74 6.588 14.74H6.87C6.91 14.74 6.942 14.754 6.966 14.782C6.994 14.806 7.008 14.838 7.008 14.878V16.966L8.19 15.982C8.238 15.942 8.274 15.916 8.298 15.904C8.326 15.888 8.37 15.88 8.43 15.88H8.748C8.784 15.88 8.814 15.892 8.838 15.916C8.862 15.94 8.874 15.97 8.874 16.006C8.874 16.022 8.868 16.04 8.856 16.06C8.848 16.08 8.83 16.1 8.802 16.12L7.416 17.272L8.952 18.766C9 18.806 9.024 18.842 9.024 18.874C9.024 18.91 9.012 18.94 8.988 18.964C8.964 18.988 8.934 19 8.898 19H8.586C8.526 19 8.482 18.994 8.454 18.982C8.426 18.966 8.39 18.938 8.346 18.898L7.008 17.62V18.862C7.008 18.902 6.994 18.936 6.966 18.964C6.942 18.988 6.91 19 6.87 19H6.588ZM10.6513 19.06C10.3673 19.06 10.1213 19.006 9.91327 18.898C9.70927 18.786 9.55127 18.628 9.43927 18.424C9.32727 18.216 9.26727 17.968 9.25927 17.68C9.25527 17.62 9.25327 17.54 9.25327 17.44C9.25327 17.34 9.25527 17.26 9.25927 17.2C9.26727 16.912 9.32727 16.666 9.43927 16.462C9.55127 16.254 9.70927 16.096 9.91327 15.988C10.1213 15.876 10.3673 15.82 10.6513 15.82C10.8833 15.82 11.0813 15.852 11.2453 15.916C11.4133 15.98 11.5513 16.062 11.6593 16.162C11.7673 16.262 11.8473 16.37 11.8993 16.486C11.9553 16.602 11.9853 16.712 11.9893 16.816C11.9933 16.856 11.9813 16.888 11.9533 16.912C11.9253 16.936 11.8913 16.948 11.8513 16.948H11.5633C11.5233 16.948 11.4933 16.94 11.4733 16.924C11.4533 16.904 11.4333 16.872 11.4133 16.828C11.3413 16.632 11.2433 16.494 11.1193 16.414C10.9953 16.334 10.8413 16.294 10.6573 16.294C10.4173 16.294 10.2213 16.368 10.0693 16.516C9.92127 16.664 9.84127 16.902 9.82927 17.23C9.82527 17.374 9.82527 17.514 9.82927 17.65C9.84127 17.982 9.92127 18.222 10.0693 18.37C10.2213 18.514 10.4173 18.586 10.6573 18.586C10.8413 18.586 10.9953 18.546 11.1193 18.466C11.2433 18.386 11.3413 18.248 11.4133 18.052C11.4333 18.008 11.4533 17.978 11.4733 17.962C11.4933 17.942 11.5233 17.932 11.5633 17.932H11.8513C11.8913 17.932 11.9253 17.944 11.9533 17.968C11.9813 17.992 11.9933 18.024 11.9893 18.064C11.9853 18.148 11.9673 18.234 11.9353 18.322C11.9033 18.41 11.8513 18.5 11.7793 18.592C11.7113 18.68 11.6253 18.76 11.5213 18.832C11.4173 18.9 11.2913 18.956 11.1433 19C10.9993 19.04 10.8353 19.06 10.6513 19.06ZM13.5718 19.06C13.3718 19.06 13.1898 19.02 13.0258 18.94C12.8618 18.86 12.7298 18.752 12.6298 18.616C12.5298 18.48 12.4798 18.326 12.4798 18.154C12.4798 17.878 12.5918 17.658 12.8158 17.494C13.0398 17.33 13.3318 17.222 13.6918 17.17L14.5858 17.044V16.87C14.5858 16.678 14.5298 16.528 14.4178 16.42C14.3098 16.312 14.1318 16.258 13.8838 16.258C13.7038 16.258 13.5578 16.294 13.4458 16.366C13.3378 16.438 13.2618 16.53 13.2178 16.642C13.1938 16.702 13.1518 16.732 13.0918 16.732H12.8218C12.7778 16.732 12.7438 16.72 12.7198 16.696C12.6998 16.668 12.6898 16.636 12.6898 16.6C12.6898 16.54 12.7118 16.466 12.7558 16.378C12.8038 16.29 12.8758 16.204 12.9718 16.12C13.0678 16.036 13.1898 15.966 13.3378 15.91C13.4898 15.85 13.6738 15.82 13.8898 15.82C14.1298 15.82 14.3318 15.852 14.4958 15.916C14.6598 15.976 14.7878 16.058 14.8798 16.162C14.9758 16.266 15.0438 16.384 15.0838 16.516C15.1278 16.648 15.1498 16.782 15.1498 16.918V18.862C15.1498 18.902 15.1358 18.936 15.1078 18.964C15.0838 18.988 15.0518 19 15.0118 19H14.7358C14.6918 19 14.6578 18.988 14.6338 18.964C14.6098 18.936 14.5978 18.902 14.5978 18.862V18.604C14.5458 18.676 14.4758 18.748 14.3878 18.82C14.2998 18.888 14.1898 18.946 14.0578 18.994C13.9258 19.038 13.7638 19.06 13.5718 19.06ZM13.6978 18.61C13.8618 18.61 14.0118 18.576 14.1478 18.508C14.2838 18.436 14.3898 18.326 14.4658 18.178C14.5458 18.03 14.5858 17.844 14.5858 17.62V17.452L13.8898 17.554C13.6058 17.594 13.3918 17.662 13.2478 17.758C13.1038 17.85 13.0318 17.968 13.0318 18.112C13.0318 18.224 13.0638 18.318 13.1278 18.394C13.1958 18.466 13.2798 18.52 13.3798 18.556C13.4838 18.592 13.5898 18.61 13.6978 18.61ZM16.1564 19C16.1164 19 16.0824 18.988 16.0544 18.964C16.0304 18.936 16.0184 18.902 16.0184 18.862V14.878C16.0184 14.838 16.0304 14.806 16.0544 14.782C16.0824 14.754 16.1164 14.74 16.1564 14.74H16.4384C16.4824 14.74 16.5164 14.754 16.5404 14.782C16.5644 14.806 16.5764 14.838 16.5764 14.878V18.862C16.5764 18.902 16.5644 18.936 16.5404 18.964C16.5164 18.988 16.4824 19 16.4384 19H16.1564Z"
+                            fill="#FF5050" />
+                        </svg>
+
+                        <span class="text-muted textMiddle"> {{treino.value.calorias}} Kcal</span><br>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF5050"
+                          class="bi bi-calendar-day" viewBox="0 0 16 16">
+                          <path
+                            d="M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43zm.094 5.093h.672V7.418h-.672v4.105z" />
+                          <path
+                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                        </svg>
+
+                        <span class="text-muted textMiddle"> {{treino.value.data | date: 'fullDate'}}</span><br>
+
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row text-center">
-                            <h5 class="text-dark">Publicações</h5>
-                        </div>
-                        <div class="row">
-                            <div *ngFor="let pub of userInfo.posts" class="col-sm-12 col-lg-6 col-md-12 col-12 mt-3">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modalPub(pub)">
-                                    <div class="card">
-                                        <div class="card-body">
-
-                                            <div class="row">
-                                                <div class="col-md-2 mt-2">
-                                                    <div class="mx-auto text-center">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
-                                                            fill="currentColor" class="bi bi-person-circle"
-                                                            viewBox="0 0 16 16">
-                                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                            <path fill-rule="evenodd"
-                                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-10 mt-2 px-md-3">
-                                                    <h6 class="card-title">{{userInfo.perfil.nome}}</h6>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-3" style="margin-left: auto;">
-                                                <p class="text-muted">{{pub.descricao}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4  text-center">
-                                <h5 class="text-dark">Treinos</h5>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#">
-                                    <img class="float-end" src="./img/plus-lg.svg">
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 mt-3" *ngFor="let treino of userTreinos;let i = index">
-                                {{treino}}
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <div class="col-md-2 mt-20">
-                                                <div class="mx-auto">
-                                                    <img src="./img/Group 58.png"
-                                                        class="img-fluid Crossfit mx-auto d-block ">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-8 mt-2 ">
-                                                <h6 class="card-title">CrossFit</h6>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="#FF5050" class="bi bi-stopwatch" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
-                                                    <path
-                                                        d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
-                                                </svg>
-                                                <span class="text-muted textMiddle">
-                                                    {{treino[0].duracao}}</span><br>
-                                                <svg width="16" height="20" viewBox="0 0 22 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M8.04489 5.6576C7.61532 6.94117 7.48801 8.30764 7.99902 9.5C7.29059 9.51243 5.99902 8 5.99902 8C5.99902 8 3 10 3 15.5C3 16 3.49902 22.5 12 22.5C19.5 22.5 19.999 17 19.999 15.5C19.999 10 17 8 17 8C17 8 16.499 9.5 15.5 9.5C15.5 9 14.8683 7.20721 14 6C13.355 5.10331 12.517 4.97612 12 4C11.4441 2.95033 11.5 1.5 11.5 1.5C10.9938 1.49988 9.7181 2.28088 8.77701 4"
-                                                        stroke="#FF5050" stroke-width="1.25" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                    <path
-                                                        d="M6.588 19C6.548 19 6.514 18.988 6.486 18.964C6.462 18.936 6.45 18.902 6.45 18.862V14.878C6.45 14.838 6.462 14.806 6.486 14.782C6.514 14.754 6.548 14.74 6.588 14.74H6.87C6.91 14.74 6.942 14.754 6.966 14.782C6.994 14.806 7.008 14.838 7.008 14.878V16.966L8.19 15.982C8.238 15.942 8.274 15.916 8.298 15.904C8.326 15.888 8.37 15.88 8.43 15.88H8.748C8.784 15.88 8.814 15.892 8.838 15.916C8.862 15.94 8.874 15.97 8.874 16.006C8.874 16.022 8.868 16.04 8.856 16.06C8.848 16.08 8.83 16.1 8.802 16.12L7.416 17.272L8.952 18.766C9 18.806 9.024 18.842 9.024 18.874C9.024 18.91 9.012 18.94 8.988 18.964C8.964 18.988 8.934 19 8.898 19H8.586C8.526 19 8.482 18.994 8.454 18.982C8.426 18.966 8.39 18.938 8.346 18.898L7.008 17.62V18.862C7.008 18.902 6.994 18.936 6.966 18.964C6.942 18.988 6.91 19 6.87 19H6.588ZM10.6513 19.06C10.3673 19.06 10.1213 19.006 9.91327 18.898C9.70927 18.786 9.55127 18.628 9.43927 18.424C9.32727 18.216 9.26727 17.968 9.25927 17.68C9.25527 17.62 9.25327 17.54 9.25327 17.44C9.25327 17.34 9.25527 17.26 9.25927 17.2C9.26727 16.912 9.32727 16.666 9.43927 16.462C9.55127 16.254 9.70927 16.096 9.91327 15.988C10.1213 15.876 10.3673 15.82 10.6513 15.82C10.8833 15.82 11.0813 15.852 11.2453 15.916C11.4133 15.98 11.5513 16.062 11.6593 16.162C11.7673 16.262 11.8473 16.37 11.8993 16.486C11.9553 16.602 11.9853 16.712 11.9893 16.816C11.9933 16.856 11.9813 16.888 11.9533 16.912C11.9253 16.936 11.8913 16.948 11.8513 16.948H11.5633C11.5233 16.948 11.4933 16.94 11.4733 16.924C11.4533 16.904 11.4333 16.872 11.4133 16.828C11.3413 16.632 11.2433 16.494 11.1193 16.414C10.9953 16.334 10.8413 16.294 10.6573 16.294C10.4173 16.294 10.2213 16.368 10.0693 16.516C9.92127 16.664 9.84127 16.902 9.82927 17.23C9.82527 17.374 9.82527 17.514 9.82927 17.65C9.84127 17.982 9.92127 18.222 10.0693 18.37C10.2213 18.514 10.4173 18.586 10.6573 18.586C10.8413 18.586 10.9953 18.546 11.1193 18.466C11.2433 18.386 11.3413 18.248 11.4133 18.052C11.4333 18.008 11.4533 17.978 11.4733 17.962C11.4933 17.942 11.5233 17.932 11.5633 17.932H11.8513C11.8913 17.932 11.9253 17.944 11.9533 17.968C11.9813 17.992 11.9933 18.024 11.9893 18.064C11.9853 18.148 11.9673 18.234 11.9353 18.322C11.9033 18.41 11.8513 18.5 11.7793 18.592C11.7113 18.68 11.6253 18.76 11.5213 18.832C11.4173 18.9 11.2913 18.956 11.1433 19C10.9993 19.04 10.8353 19.06 10.6513 19.06ZM13.5718 19.06C13.3718 19.06 13.1898 19.02 13.0258 18.94C12.8618 18.86 12.7298 18.752 12.6298 18.616C12.5298 18.48 12.4798 18.326 12.4798 18.154C12.4798 17.878 12.5918 17.658 12.8158 17.494C13.0398 17.33 13.3318 17.222 13.6918 17.17L14.5858 17.044V16.87C14.5858 16.678 14.5298 16.528 14.4178 16.42C14.3098 16.312 14.1318 16.258 13.8838 16.258C13.7038 16.258 13.5578 16.294 13.4458 16.366C13.3378 16.438 13.2618 16.53 13.2178 16.642C13.1938 16.702 13.1518 16.732 13.0918 16.732H12.8218C12.7778 16.732 12.7438 16.72 12.7198 16.696C12.6998 16.668 12.6898 16.636 12.6898 16.6C12.6898 16.54 12.7118 16.466 12.7558 16.378C12.8038 16.29 12.8758 16.204 12.9718 16.12C13.0678 16.036 13.1898 15.966 13.3378 15.91C13.4898 15.85 13.6738 15.82 13.8898 15.82C14.1298 15.82 14.3318 15.852 14.4958 15.916C14.6598 15.976 14.7878 16.058 14.8798 16.162C14.9758 16.266 15.0438 16.384 15.0838 16.516C15.1278 16.648 15.1498 16.782 15.1498 16.918V18.862C15.1498 18.902 15.1358 18.936 15.1078 18.964C15.0838 18.988 15.0518 19 15.0118 19H14.7358C14.6918 19 14.6578 18.988 14.6338 18.964C14.6098 18.936 14.5978 18.902 14.5978 18.862V18.604C14.5458 18.676 14.4758 18.748 14.3878 18.82C14.2998 18.888 14.1898 18.946 14.0578 18.994C13.9258 19.038 13.7638 19.06 13.5718 19.06ZM13.6978 18.61C13.8618 18.61 14.0118 18.576 14.1478 18.508C14.2838 18.436 14.3898 18.326 14.4658 18.178C14.5458 18.03 14.5858 17.844 14.5858 17.62V17.452L13.8898 17.554C13.6058 17.594 13.3918 17.662 13.2478 17.758C13.1038 17.85 13.0318 17.968 13.0318 18.112C13.0318 18.224 13.0638 18.318 13.1278 18.394C13.1958 18.466 13.2798 18.52 13.3798 18.556C13.4838 18.592 13.5898 18.61 13.6978 18.61ZM16.1564 19C16.1164 19 16.0824 18.988 16.0544 18.964C16.0304 18.936 16.0184 18.902 16.0184 18.862V14.878C16.0184 14.838 16.0304 14.806 16.0544 14.782C16.0824 14.754 16.1164 14.74 16.1564 14.74H16.4384C16.4824 14.74 16.5164 14.754 16.5404 14.782C16.5644 14.806 16.5764 14.838 16.5764 14.878V18.862C16.5764 18.902 16.5644 18.936 16.5404 18.964C16.5164 18.988 16.4824 19 16.4384 19H16.1564Z"
-                                                        fill="#FF5050" />
-                                                </svg>
-
-                                                <span class="text-muted textMiddle">{{treino.calorias}} Kcal</span><br>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="#FF5050" class="bi bi-calendar-day" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M4.684 11.523v-2.3h2.261v-.61H4.684V6.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V8.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43zm.094 5.093h.672V7.418h-.672v4.105z" />
-                                                    <path
-                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                                                </svg>
-
-                                                <span class="text-muted textMiddle">{{treino.data}}</span><br>
-
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+  </div>
 </div>
 
 <!-- Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row  px-3 ">
-                            <div class="col-md-12 backGroundImage borderImg">
-                                <div id="carouselExampleDark" class="carousel carousel-dark slide"
-                                    data-bs-ride="carousel">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
-                                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
-                                            aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
-                                            aria-label="Slide 3"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="./img/warming 1.svg" height="300" width="300"
-                                                class="d-block w-100" alt="...">
-
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="./img/sleep 1.svg" height="300" width="300" class="d-block w-100"
-                                                alt="...">
-
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="./img/Crossfit.svg" height="300" width="300" class="d-block w-100"
-                                                alt="...">
-
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button"
-                                        data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row link-light">
-                            <div class="col-md-12">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg><span class="textMiddle"> {{modalInfo._count.gostos_publicacao}}</span>
-                            </div>
-                        </div>
-                        <div class="row link-light">
-                            <div class="col-md-12">{{modalInfo.descricao}}</div>
-                        </div>
-                        <br>
-                        <div class="row link-light">
-                            <div class="col-md-12">
-                                <!--   {{modalInfo.data | date:'medium'}} -->
-                            </div>
-                        </div>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row  px-3 ">
+              <div class="col-md-12 backGroundImage borderImg">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                  <div class="carousel-inner" style=" width:100%; height: 500px !important;">
+                    <div class="carousel-item"
+                      *ngFor="let image of modalInfo.imagens_publicacao;let index = index;let isFirst = first"
+                      [ngClass]="{active:isFirst}">
+                      <img [src]="image.url" class="d-block w-100" [alt]="image">
                     </div>
-                    <div class="col-md-6">
-                        <div class="card-scroll h-375px">
-                            <div class="px-3">
-
-                                <div class="row">
-                                    <div class="card">
-                                        <div class="card-body" style="padding-bottom: 0px;">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
-                                                        fill="currentColor" class="bi bi-person-circle"
-                                                        viewBox="0 0 16 16">
-                                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                    </svg>
-                                                    <span class="card-title textMiddle fs-6 textColor mx-2"><b>António
-                                                            Miguel Silva</b></span>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2">
-                                                <p class="fontComentarios lh-1">Lorem ipsum dolor sit, amet
-                                                    consectetur
-                                                    adipisicing elit. Facilis neque quia eveniet pariatur dolore et
-                                                    rerum consectetur nostrum, id amet atque provident voluptates
-                                                    quo
-                                                    officiis eum doloremque nemo? Fugiat, placeat.</p>
-                                            </div>
-                                        </div>
-                                        <div class="card-body fontComentarios text-muted" style="padding-top: 0px;">
-                                            <span>Há 30 minutos</span>
-                                            <div class="float-end">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="#FF5050" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                                                </svg>
-                                                <span class="link-dark textMiddle"> 20 Gostos</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="card">
-                                        <div class="card-body" style="padding-bottom: 0px;">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
-                                                        fill="currentColor" class="bi bi-person-circle"
-                                                        viewBox="0 0 16 16">
-                                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                    </svg>
-                                                    <a class="text-decoration-none link-dark" href="./perfilMarta.html">
-                                                        <span class="card-title textMiddle fs-6 textColor mx-2"><b>Marta
-                                                                Lopes da Silva</b></span> </a>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2">
-                                                <p class="fontComentarios lh-1">Lorem ipsum dolor sit, amet
-                                                    consectetur
-                                                    adipisicing elit. Facilis neque quia eveniet pariatur dolore et
-                                                    rerum consectetur nostrum, id amet atque provident voluptates
-                                                    quo
-                                                    officiis eum doloremque nemo? Fugiat, placeat.</p>
-                                            </div>
-                                        </div>
-                                        <div class="card-body fontComentarios text-muted" style="padding-top: 0px;">
-                                            <span>Há 30 minutos</span>
-                                            <div class="float-end">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="#FF5050" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                                                </svg>
-                                                <span class="link-dark textMiddle"> 20 Gostos</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="card">
-                                        <div class="card-body" style="padding-bottom: 0px;">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
-                                                        fill="currentColor" class="bi bi-person-circle"
-                                                        viewBox="0 0 16 16">
-                                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                                    </svg>
-                                                    <span class="card-title textMiddle fs-6 textColor mx-2"><b>António
-                                                            Miguel Silva</b></span>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2">
-                                                <p class="fontComentarios lh-1">Lorem ipsum dolor sit, amet
-                                                    consectetur
-                                                    adipisicing elit. Facilis neque quia eveniet pariatur dolore et
-                                                    rerum consectetur nostrum, id amet atque provident voluptates
-                                                    quo
-                                                    officiis eum doloremque nemo? Fugiat, placeat.</p>
-                                            </div>
-                                        </div>
-                                        <div class="card-body fontComentarios text-muted" style="padding-top: 0px;">
-                                            <span>Há 30 minutos</span>
-                                            <div class="float-end">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="#FF5050" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                                                </svg>
-                                                <span class="link-dark textMiddle"> 20 Gostos</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-md-10">
-                                <div class="mb-3">
-                                    <input type="comment" class="form-control comentForm" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Adicionar um comentário">
-                                </div>
-                            </div>
-                            <div class="col-md-2" style="padding-left: 0;">
-                                <button class="btn btn-primary btn-Red"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-send-fill"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
-                                    </svg></button>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
+              </div>
             </div>
+            <div class="row link-light">
+              <div class="col-md-12">
+                <a (click)="likePost(modalInfo.publicacao_id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                  </svg></a><span class="textMiddle"> {{modalInfo._count.gostos_publicacao}} </span>
+              </div>
+            </div>
+            <div class="row link-light">
+              <div class="col-md-12"></div>
+            </div>
+            <br>
+            <div class="row link-light">
+              <div class="col-md-12">
+                {{modalInfo.data | date : 'fullDate'}}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-scroll h-375px">
+              <div class="px-3">
+                <div class="row mt-3" *ngFor="let comments of modalInfo.comentarios_publicacao ">
+                  <div class="card">
+                    <div class="card-body" style="padding-bottom: 0px;">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                          </svg>
+                          <a class="text-decoration-none link-dark" href="./perfil/{{comments.users.uid}}">
+                            <span
+                              class="card-title textMiddle fs-6 textColor mx-2"><b>{{comments.users.nome}}</b></span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="row mt-2">
+                        <p class="fontComentarios lh-1">{{comments.comentario}}</p>
+                      </div>
+                    </div>
+                    <div class="card-body fontComentarios text-muted" style="padding-top: 0px;">
+                      <span>Há 30 minutos</span>
+                      <div class="float-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FF5050"
+                          class="bi bi-heart-fill" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                        </svg>
+                        <span class="link-dark textMiddle"> 20 Gostos</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+              </div>
+
+            </div>
+            <div class="row mt-5">
+              <div class="col-md-10">
+                <div class="mb-3">
+                  <input type="comment" class="form-control comentForm"  [(ngModel)]="pubcomment" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Adicionar um comentário">
+                </div>
+              </div>
+              <div class="col-md-2" style="padding-left: 0;">
+                <button class="btn btn-primary btn-Red" (click)="commentPost(modalInfo.publicacao_id)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z" />
+                  </svg></button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
